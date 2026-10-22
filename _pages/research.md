@@ -26,3 +26,4 @@ States compete for retirees through tax preferences for Social Security, pension
 with Christian Posso
 
 This paper examines how children's outcomes change when an adult who becomes involved in crime enters their household. Using linked household survey, education, and crime records from Medellín, we compare children who experience the arrival of such an adult with children who experience the arrival of an adult who does not commit a crime. Children exposed to a criminally involved adult are 9–10 percentage points more likely to drop out of school and 1–1.3 percentage points more likely to have a recorded criminal offense, and those who take the high-school mathematics exam score 0.05–0.06 standard deviations lower. The estimates are similar after matching on child, household, and mover characteristics.
+
