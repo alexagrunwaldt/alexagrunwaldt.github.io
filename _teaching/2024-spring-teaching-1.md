@@ -4,6 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/2024-spring-teaching-1
 venue: "Yale University, Department of Economics"
+date: "2024"
 location: "New Haven, CT"
 ---
 
