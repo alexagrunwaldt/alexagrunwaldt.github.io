@@ -8,4 +8,4 @@ date: 2024-01-01
 location: "New Haven, CT"
 ---
 
-Fall 2024 | Professor Cormac O'Dea
+Fall 2024--Prof. Cormac O'Dea
