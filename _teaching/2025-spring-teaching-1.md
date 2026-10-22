@@ -1,10 +1,10 @@
 ---
-title: "Econ 115: Introductory Microeconomics"
+title: "Econ 224: Labor Economics"
 collection: teaching
 type: "Undergraduate course"
-permalink: /teaching/2014-spring-teaching-1
+permalink: /teaching/2025-spring-teaching-1
 venue: "Yale University, Department of Economics"
 location: "New Haven, CT"
 ---
 
-Fall 2024--Prof. Cormac O'Dea
+Spring 2025--Prof. William Hawkins
