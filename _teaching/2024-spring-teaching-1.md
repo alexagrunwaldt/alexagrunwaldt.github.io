@@ -7,4 +7,4 @@ venue: "Yale University, Department of Economics"
 location: "New Haven, CT"
 ---
 
-Fall 2024--Prof. Cormac O'Dea
+Spring 2024--Prof. Cormac O'Dea
