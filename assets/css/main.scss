@@ -1,0 +1,413 @@
+---
+---
+
+/*
+ * This file controls what is imported from /_sass
+ *
+ * Note that the files are processed in the order they are imported, so they are partly
+   sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+@import
+    "vendor/breakpoint/breakpoint",
+
+    "themes",
+    "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
+    "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}";
+
+/* Fonts for the whole site */
+$serif                      : "EB Garamond", Georgia, serif;
+$sans-serif                 : $serif;
+$sans-serif-narrow          : $serif;
+$global-font-family         : $serif;
+$header-font-family         : $serif;
+$caption-font-family        : $serif;
+$monospace                  : "DM Mono", "Courier New", monospace;
+
+@import
+    "include/mixins",
+    "vendor/susy/susy",
+
+    "layout/reset",
+    "layout/base",
+
+    "include/utilities",
+    "layout/tables",
+    "layout/buttons",
+    "layout/notices",
+    "layout/masthead",
+    "layout/navigation",
+    "layout/footer",
+    "syntax",
+
+    "layout/forms",
+
+    "layout/page",
+    "layout/archive",
+    "layout/sidebar"
+;
+
+/* ==========================================================================
+   CUSTOM STYLE
+   ========================================================================== */
+
+/* Colors. Background options: sage #7c8478, stone #86827a, slate #7d8790 */
+$my-ground: #7c8478;
+$my-ink:    #121510;
+$my-mono:   "DM Mono", "Courier New", monospace;
+
+/* The same colors in light and dark mode */
+:root,
+html[data-theme="dark"] {
+  --global-bg-color: #{$my-ground};
+  --global-footer-bg-color: #{$my-ground};
+  --global-text-color: #{$my-ink};
+  --global-text-color-light: #{$my-ink};
+  --global-border-color: #{$my-ink};
+  --global-dark-border-color: #{$my-ink};
+  --global-base-color: #{$my-ink};
+  --global-link-color: #{$my-ink};
+  --global-link-color-hover: #{$my-ink};
+  --global-link-color-visited: #{$my-ink};
+  --global-masthead-link-color: #{$my-ink};
+  --global-masthead-link-color-hover: #{$my-ink};
+  --global-fig-caption-color: #{$my-ink};
+  --global-thead-color: #{$my-ground};
+  --global-code-background-color: #{$my-ground};
+  --global-code-text-color: #{$my-ink};
+}
+
+body {
+  padding-top: 0 !important;
+  padding-bottom: 8rem !important;
+}
+
+a {
+  color: $my-ink;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+a:hover {
+  color: $my-ink;
+  text-decoration-thickness: 2px;
+}
+
+/* Boxed buttons */
+.box {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid $my-ink;
+  color: $my-ink;
+  font-family: $my-mono;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:hover,
+  &.is-current {
+    background: $my-ink;
+    color: $my-ground;
+  }
+}
+
+a.box[href$=".pdf"]::after {
+  content: "\00a0\2197";
+}
+
+/* Menu bar, fixed to the bottom of the screen */
+.masthead {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: $my-ground;
+  animation: none;
+
+  &::after {
+    display: none;
+  }
+}
+
+.masthead__inner-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 40px;
+  max-width: none;
+  margin: 0;
+  padding: 12px 24px 14px;
+  font-family: $my-mono;
+
+  @include breakpoint($x-large) {
+    max-width: none;
+  }
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.bottom-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.masthead__caption {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.masthead__linkedin {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 599px) {
+  .masthead__inner-wrap {
+    gap: 8px;
+    padding: 10px 16px 12px;
+  }
+
+  .bottom-nav ul {
+    gap: 6px;
+  }
+
+  .masthead .box {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+
+  .masthead__caption {
+    font-size: 12px;
+  }
+
+  .masthead__linkedin {
+    display: none;
+  }
+}
+
+/* Page layout: photo on the left, content on the right */
+#main {
+  max-width: none;
+  margin: 0;
+  padding: 28px 24px 0;
+  animation: none;
+
+  @include breakpoint($x-large) {
+    max-width: none;
+  }
+}
+
+@include breakpoint($large) {
+  .sidebar {
+    width: 300px;
+    max-width: none;
+    margin-right: 0;
+    padding-right: 0;
+
+    @include breakpoint($x-large) {
+      max-width: none;
+    }
+  }
+
+  .page,
+  .archive {
+    width: calc(100% - 348px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+@media screen and (min-width: $sidebar-screen-min-width) {
+  .sidebar {
+    position: sticky;
+    top: 28px;
+    height: auto;
+    overflow: visible;
+    padding-top: 0 !important;
+  }
+}
+
+/* Sidebar: just the photo (contact details are in the menu bar) */
+.sidebar {
+  padding-top: 0 !important;
+}
+
+.sidebar .author__content,
+.sidebar .author__urls-wrapper {
+  display: none;
+}
+
+.sidebar .author__avatar {
+  display: block;
+  width: 120px;
+
+  @include breakpoint($large) {
+    width: 100%;
+  }
+}
+
+.sidebar .author__avatar img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  padding: 0;
+  border: 1px solid $my-ink;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 924px) {
+  #main {
+    padding: 16px 16px 0;
+  }
+
+  .sidebar {
+    margin: 0 0 22px;
+  }
+}
+
+/* Large italic headings */
+.page__title,
+.page__content .hero-name {
+  margin: 0;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1;
+}
+
+.page__title {
+  margin-bottom: 56px;
+  font-size: clamp(48px, 6.6vw, 104px);
+}
+
+.page__content .hero-name {
+  font-size: clamp(44px, 6.6vw, 100px);
+}
+
+.page__content .hero-lines {
+  margin: 18px 0 0;
+  font-size: clamp(22px, 2.7vw, 38px);
+  font-style: italic;
+  line-height: 1.16;
+
+  span {
+    display: block;
+  }
+}
+
+.page__content .hero-lines + p {
+  margin-top: 56px;
+}
+
+/* Text */
+.page__content {
+  font-size: 1.12rem;
+  line-height: 1.55;
+
+  p,
+  ul,
+  ol {
+    max-width: 40rem;
+  }
+
+  h2 {
+    margin: 72px 0 10px;
+    padding: 0;
+    border: none;
+    font-family: $my-mono;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  h2:first-child {
+    margin-top: 0;
+  }
+
+  h3 {
+    max-width: 47rem;
+    margin: 48px 0 10px;
+    font-size: clamp(26px, 2.4vw, 34px);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  h2 + h3 {
+    margin-top: 4px;
+  }
+
+  h3 a {
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.12em;
+  }
+
+  .meta,
+  .label {
+    margin: 0 0 10px;
+    font-family: $my-mono;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 0;
+  }
+
+  a.box {
+    font-size: 13px;
+    text-decoration: none;
+  }
+}
+
+/* Job market paper on the home page */
+.page__content .jmp {
+  margin-top: 48px;
+
+  .jmp-title {
+    max-width: 47rem;
+    margin: 0 0 10px;
+    font-size: clamp(24px, 2.3vw, 32px);
+    font-style: italic;
+    line-height: 1.15;
+  }
+}
+
+/* Teaching page */
+.archive__item-title {
+  margin: 40px 0 10px;
+  font-size: clamp(24px, 2.2vw, 30px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.archive__item-title + p {
+  margin: 0 0 8px;
+  font-family: $my-mono;
+  font-size: 13px;
+  line-height: 1.5;
+
+  i {
+    font-style: normal;
+  }
+}
+
+.archive {
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
