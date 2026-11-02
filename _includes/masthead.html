@@ -1,0 +1,23 @@
+{% include base_path %}
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <nav class="bottom-nav" aria-label="Main">
+      <ul>
+        {% for link in site.data.navigation.main %}
+          {% if link.url contains 'http' %}
+            {% assign domain = '' %}
+          {% else %}
+            {% assign domain = base_path %}
+          {% endif %}
+          {% assign current = false %}
+          {% if page.url == link.url or page.url contains link.url and link.url != '/' %}
+            {% assign current = true %}
+          {% endif %}
+          <li><a class="box{% if current %} is-current{% endif %}" href="{{ domain }}{{ link.url }}"{% if current %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <p class="masthead__caption">{{ site.author.name }}, Department of Economics, Yale University<br><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+    {% if site.author.linkedin %}<a class="box masthead__linkedin" href="https://www.linkedin.com/in/{{ site.author.linkedin }}">LinkedIn &#8599;</a>{% endif %}
+  </div>
+</div>
