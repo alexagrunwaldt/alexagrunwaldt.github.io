@@ -6,19 +6,14 @@ redirect_from:
   - /about.html
 ---
 
-<h1 class="hero-name">Alexa Grunwaldt</h1>
-<p class="hero-lines">
-<span>PhD Candidate in Economics</span>
-<span>Yale University</span>
-<span>Labor &amp; Public Economics</span>
-<span>2026–2027 Job Market</span>
-</p>
+<div class="block">
+<p>My research follows families through major life events, like a dementia diagnosis or a spell of homelessness, and traces what happens to their work and income. I link large administrative records from Colombia and the United States and use quasi-experimental methods to estimate the causal effects of these events.</p>
+</div>
 
-My research is in labor and public economics, with a focus on how health shocks and family circumstances shape economic well-being. I use linked administrative data and quasi-experimental methods to study their effects on employment, earnings, and children's educational outcomes.
-
-<div class="jmp">
-<p class="label">Job market paper</p>
-<p class="jmp-title">The Economic Consequences of Alzheimer's and Dementia: Evidence from Patients and Households in Colombia</p>
-<p class="meta">with Christian Posso and Andrea Franco Hernandez</p>
-<p class="boxes"><a class="box" href="/research/">Abstract</a></p>
+<div class="block block--tight">
+<p><b>Job market paper</b></p>
+<p><a href="/research/">The Economic Consequences of Alzheimer's and Dementia: Evidence from Patients and Households in Colombia</a></p>
+<p>with Christian Posso and Andrea Franco Hernandez</p>
+<p style="margin-top: 0.6em;">Two years after a first dementia diagnosis, patients' formal employment is about 15 percentage points lower, and other household members' formal employment and earnings fall too: costs that studies of patients alone miss.</p>
+<p style="margin-top: 0.6em;"><a href="/files/jobmarketpaper.pdf">Paper (PDF)</a></p>
 </div>
