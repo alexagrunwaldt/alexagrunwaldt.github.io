@@ -245,6 +245,14 @@ a {
   }
 }
 
+.sidebar .profile a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 /* Page content */
 .page__content {
   font-size: 1em;
@@ -407,9 +415,29 @@ a {
     border-top: none;
   }
 
-  .profile__contact,
-  .profile__fields {
+  .profile__fields,
+  .profile__name {
     display: none;
+  }
+
+  .profile__photo {
+    grid-row: 1 / span 2;
+  }
+
+  .profile__nav {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .profile__contact {
+    grid-column: 2;
+    grid-row: 2;
+    margin-top: 10px;
+
+    a {
+      display: inline-block;
+      padding: 4px 0;
+    }
   }
 
   .sidebar .profile__photo img {
