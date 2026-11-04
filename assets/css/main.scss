@@ -8,7 +8,7 @@
    sorted by the dependencies. Also, the first two lines of the file are required by Jekyll.
  */
 
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap");
 
 @import
     "vendor/breakpoint/breakpoint",
@@ -17,14 +17,13 @@
     "theme/{{ site.site_theme | default: 'default' | append: '_light' }}",
     "theme/{{ site.site_theme | default: 'default' | append: '_dark' }}";
 
-/* Fonts for the whole site */
-$serif                      : "EB Garamond", Georgia, serif;
-$sans-serif                 : $serif;
-$sans-serif-narrow          : $serif;
-$global-font-family         : $serif;
-$header-font-family         : $serif;
-$caption-font-family        : $serif;
-$monospace                  : "DM Mono", "Courier New", monospace;
+/* Font for the whole site */
+$sans-serif                 : "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+$sans-serif-narrow          : $sans-serif;
+$serif                      : $sans-serif;
+$global-font-family         : $sans-serif;
+$header-font-family         : $sans-serif;
+$caption-font-family        : $sans-serif;
 
 @import
     "include/mixins",
@@ -50,99 +49,118 @@ $monospace                  : "DM Mono", "Courier New", monospace;
 ;
 
 /* ==========================================================================
-   CUSTOM STYLE
+   CUSTOM STYLE: white page, gray rules, blue links
    ========================================================================== */
 
-/* Colors. Background options: sage #7c8478, stone #86827a, slate #7d8790 */
-$my-ground: #7c8478;
-$my-ink:    #121510;
-$my-mono:   "DM Mono", "Courier New", monospace;
+$my-page:       #ffffff;
+$my-surround:   #e6e6e6;
+$my-ink:        #333333;
+$my-rule:       #999999;
+$my-link:       #001df6;
+$my-link-hover: #0011a8;
 
 /* The same colors in light and dark mode */
 :root,
 html[data-theme="dark"] {
-  --global-bg-color: #{$my-ground};
-  --global-footer-bg-color: #{$my-ground};
+  --global-bg-color: #{$my-page};
+  --global-footer-bg-color: #{$my-page};
   --global-text-color: #{$my-ink};
   --global-text-color-light: #{$my-ink};
-  --global-border-color: #{$my-ink};
-  --global-dark-border-color: #{$my-ink};
-  --global-base-color: #{$my-ink};
-  --global-link-color: #{$my-ink};
-  --global-link-color-hover: #{$my-ink};
-  --global-link-color-visited: #{$my-ink};
+  --global-border-color: #{$my-rule};
+  --global-dark-border-color: #{$my-rule};
+  --global-base-color: #{$my-link};
+  --global-link-color: #{$my-link};
+  --global-link-color-hover: #{$my-link-hover};
+  --global-link-color-visited: #{$my-link};
   --global-masthead-link-color: #{$my-ink};
   --global-masthead-link-color-hover: #{$my-ink};
   --global-fig-caption-color: #{$my-ink};
-  --global-thead-color: #{$my-ground};
-  --global-code-background-color: #{$my-ground};
+  --global-thead-color: #{$my-page};
+  --global-code-background-color: #f4f4f4;
   --global-code-text-color: #{$my-ink};
 }
 
-body {
-  padding-top: 0 !important;
-  padding-bottom: 8rem !important;
-}
+html {
+  font-size: 17px;
+  background: $my-surround;
 
-a {
-  color: $my-ink;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.14em;
-}
-
-a:hover {
-  color: $my-ink;
-  text-decoration-thickness: 2px;
-}
-
-/* Boxed buttons */
-.box {
-  display: inline-block;
-  padding: 6px 12px;
-  border: 1px solid $my-ink;
-  color: $my-ink;
-  font-family: $my-mono;
-  font-size: 14px;
-  font-style: normal;
-  line-height: 1.3;
-  text-decoration: none;
-  white-space: nowrap;
-
-  &:hover,
-  &.is-current {
-    background: $my-ink;
-    color: $my-ground;
+  @include breakpoint($medium) {
+    font-size: 17px;
   }
 }
 
-a.box[href$=".pdf"]::after {
-  content: "\00a0\2197";
+body {
+  margin: 0;
+  padding: 16px 40px 0 !important;
+  background: $my-surround;
+  color: $my-ink;
+  font-size: 17px;
+  line-height: 1.25;
 }
 
-/* Menu bar, fixed to the bottom of the screen */
+a {
+  color: $my-link;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+
+  &:hover {
+    color: $my-link-hover;
+  }
+}
+
+/* The white page */
+.sheet {
+  min-height: calc(100vh - 16px);
+  box-sizing: border-box;
+  padding: 0 30px 16px;
+  display: flex;
+  flex-direction: column;
+  background: $my-page;
+}
+
+/* Top bar and large title */
 .masthead {
-  position: fixed;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: $my-ground;
+  position: static;
+  width: auto;
+  height: auto;
+  background: none;
   animation: none;
+  z-index: auto;
 
   &::after {
     display: none;
   }
 }
 
-.masthead__inner-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 12px 40px;
+.masthead__bar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  padding: 18px 0 10px;
+  border-bottom: 1px solid $my-rule;
+}
+
+.masthead__title {
+  margin: 22px 0 0;
+  color: $my-ink;
+  font-size: clamp(56px, 9.4vw, 148px);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+/* Two columns: profile on the left, page content on the right */
+#main {
+  flex-grow: 1;
   max-width: none;
-  margin: 0;
-  padding: 12px 24px 14px;
-  font-family: $my-mono;
+  margin: clamp(72px, 12vw, 190px) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: start;
+  animation: none;
 
   @include breakpoint($x-large) {
     max-width: none;
@@ -154,181 +172,121 @@ a.box[href$=".pdf"]::after {
   }
 }
 
-.bottom-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.sidebar {
+  position: static;
+  float: none;
+  width: auto;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 0 !important;
+  overflow: visible;
+  opacity: 1;
+  transform: none;
+}
+
+.page,
+.archive {
+  float: none;
+  width: auto;
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 
-.masthead__caption {
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.4;
-}
-
-.masthead__linkedin {
-  margin-left: auto;
-}
-
-@media screen and (max-width: 599px) {
-  .masthead__inner-wrap {
-    gap: 8px;
-    padding: 10px 16px 12px;
-  }
-
-  .bottom-nav ul {
-    gap: 6px;
-  }
-
-  .masthead .box {
-    padding: 7px 10px;
-    font-size: 13px;
-  }
-
-  .masthead__caption {
-    font-size: 12px;
-  }
-
-  .masthead__linkedin {
-    display: none;
-  }
-}
-
-/* Page layout: photo on the left, content on the right */
-#main {
-  max-width: none;
-  margin: 0;
-  padding: 28px 24px 0;
-  animation: none;
-
-  @include breakpoint($x-large) {
-    max-width: none;
-  }
-}
-
-@include breakpoint($large) {
-  .sidebar {
-    width: 300px;
-    max-width: none;
-    margin-right: 0;
-    padding-right: 0;
-
-    @include breakpoint($x-large) {
-      max-width: none;
-    }
-  }
-
-  .page,
-  .archive {
-    width: calc(100% - 348px);
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@media screen and (min-width: $sidebar-screen-min-width) {
-  .sidebar {
-    position: sticky;
-    top: 28px;
-    height: auto;
-    overflow: visible;
-    padding-top: 0 !important;
-  }
-}
-
-/* Sidebar: just the photo (contact details are in the menu bar) */
-.sidebar {
-  padding-top: 0 !important;
-}
-
-.sidebar .author__content,
-.sidebar .author__urls-wrapper {
+/* The large title above replaces each page's own title */
+.page__inner-wrap > header,
+.page__title {
   display: none;
 }
 
-.sidebar .author__avatar {
-  display: block;
-  width: 120px;
-
-  @include breakpoint($large) {
-    width: 100%;
-  }
+/* Profile column */
+.profile {
+  display: flex;
+  flex-direction: column;
 }
 
-.sidebar .author__avatar img {
+.profile__block {
+  padding: 12px 0 14px;
+  border-top: 1px solid $my-rule;
+}
+
+.profile__photo {
+  padding-bottom: 16px;
+}
+
+.sidebar .profile__photo img {
   display: block;
-  width: 100%;
+  width: min(100%, 300px);
   max-width: none;
-  padding: 0;
-  border: 1px solid $my-ink;
+  height: auto;
+  border: 1px solid $my-rule;
   border-radius: 0;
 }
 
-@media screen and (max-width: 924px) {
-  #main {
-    padding: 16px 16px 0;
-  }
-
-  .sidebar {
-    margin: 0 0 22px;
-  }
-}
-
-/* Large italic headings */
-.page__title,
-.page__content .hero-name {
+.sidebar .profile p {
   margin: 0;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.012em;
-  line-height: 1;
+  font-family: inherit;
+  font-size: 1em;
+  line-height: 1.25;
 }
 
-.page__title {
-  margin-bottom: 56px;
-  font-size: clamp(48px, 6.6vw, 104px);
+.profile b {
+  font-weight: 600;
 }
 
-.page__content .hero-name {
-  font-size: clamp(44px, 6.6vw, 100px);
-}
+.profile__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-.page__content .hero-lines {
-  margin: 18px 0 0;
-  font-size: clamp(22px, 2.7vw, 38px);
-  font-style: italic;
-  line-height: 1.16;
-
-  span {
-    display: block;
+  a[aria-current="page"] {
+    color: $my-ink;
+    text-decoration: none;
   }
 }
 
-.page__content .hero-lines + p {
-  margin-top: 56px;
-}
-
-/* Text */
+/* Page content */
 .page__content {
-  font-size: 1.12rem;
-  line-height: 1.55;
+  font-size: 1em;
+  line-height: 1.4;
 
   p,
   ul,
   ol {
-    max-width: 40rem;
+    max-width: 34em;
+    margin: 0;
+  }
+
+  p + p {
+    margin-top: 1em;
+  }
+
+  b,
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    color: $my-link;
+  }
+
+  .block {
+    padding: 12px 0 18px;
+    border-top: 1px solid $my-rule;
+  }
+
+  .block--tight p + p {
+    margin-top: 0;
   }
 
   h2 {
-    margin: 72px 0 10px;
-    padding: 0;
-    border: none;
-    font-family: $my-mono;
-    font-size: 13px;
-    font-weight: 400;
+    margin: 36px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid $my-rule;
+    border-bottom: none;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.25;
   }
 
   h2:first-child {
@@ -336,78 +294,142 @@ a.box[href$=".pdf"]::after {
   }
 
   h3 {
-    max-width: 47rem;
-    margin: 48px 0 10px;
-    font-size: clamp(26px, 2.4vw, 34px);
+    max-width: 34em;
+    margin: 22px 0 4px;
+    font-size: 1em;
     font-style: italic;
     font-weight: 400;
-    line-height: 1.15;
+    line-height: 1.3;
   }
 
   h2 + h3 {
-    margin-top: 4px;
+    margin-top: 10px;
   }
 
-  h3 a {
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.12em;
-  }
-
-  .meta,
-  .label {
-    margin: 0 0 10px;
-    font-family: $my-mono;
-    font-size: 13px;
-    line-height: 1.5;
+  .meta {
+    margin: 0 0 8px;
   }
 
   .boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 6px 0 0;
-  }
-
-  a.box {
-    font-size: 13px;
-    text-decoration: none;
-  }
-}
-
-/* Job market paper on the home page */
-.page__content .jmp {
-  margin-top: 48px;
-
-  .jmp-title {
-    max-width: 47rem;
-    margin: 0 0 10px;
-    font-size: clamp(24px, 2.3vw, 32px);
-    font-style: italic;
-    line-height: 1.15;
+    margin: 8px 0 0;
   }
 }
 
 /* Teaching page */
-.archive__item-title {
-  margin: 40px 0 10px;
-  font-size: clamp(24px, 2.2vw, 30px);
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.15;
-}
+.archive {
+  font-size: 1em;
+  line-height: 1.4;
 
-.archive__item-title + p {
-  margin: 0 0 8px;
-  font-family: $my-mono;
-  font-size: 13px;
-  line-height: 1.5;
+  .list__item {
+    padding: 12px 0 14px;
+    border-top: 1px solid $my-rule;
+  }
 
-  i {
-    font-style: normal;
+  .archive__item p {
+    max-width: 34em;
+    margin: 0;
   }
 }
 
-.archive {
-  font-size: 1.12rem;
-  line-height: 1.55;
+.archive__item-title {
+  margin: 0;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Bottom line */
+.sheet__footer {
+  margin-top: auto;
+  padding-top: 96px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+
+  span {
+    min-height: 1.25em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $my-rule;
+  }
+}
+
+/* Phones */
+@media screen and (max-width: 799px) {
+  html,
+  body {
+    background: $my-page;
+  }
+
+  body {
+    padding: 0 !important;
+    font-size: 16px;
+  }
+
+  .sheet {
+    min-height: 100vh;
+    padding: 0 12px 12px;
+  }
+
+  .masthead__bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 10px 0 8px;
+  }
+
+  .masthead__role {
+    order: -1;
+  }
+
+  .masthead__title {
+    margin-top: 16px;
+    font-size: 64px;
+    line-height: 0.92;
+  }
+
+  #main {
+    margin-top: 36px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .profile {
+    display: grid;
+    grid-template-columns: 132px minmax(0, 1fr);
+    column-gap: 14px;
+    align-items: start;
+    padding: 12px 0 14px;
+    border-top: 1px solid $my-rule;
+  }
+
+  .profile__block {
+    padding: 0;
+    border-top: none;
+  }
+
+  .profile__contact,
+  .profile__fields {
+    display: none;
+  }
+
+  .sidebar .profile__photo img {
+    width: 132px;
+  }
+
+  .profile__nav {
+    gap: 6px;
+
+    a {
+      padding: 4px 0;
+    }
+  }
+
+  .sheet__footer {
+    padding-top: 48px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sheet__footer .sheet__footer-spacer {
+    display: none;
+  }
 }
