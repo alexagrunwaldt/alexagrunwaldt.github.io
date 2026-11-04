@@ -14,6 +14,6 @@ redirect_from:
 <p><b>Job market paper</b></p>
 <p><a href="/research/">The Economic Consequences of Alzheimer's and Dementia: Evidence from Patients and Households in Colombia</a></p>
 <p>with Christian Posso and Andrea Franco Hernandez</p>
-<p style="margin-top: 0.6em;">Two years after a first dementia diagnosis, patients' formal employment is about 15 percentage points lower, and other household members' formal employment and earnings fall too: costs that studies of patients alone miss.</p>
+<p style="margin-top: 0.6em;">Two years after a first dementia diagnosis, patients' formal employment is about 15 percentage points lower, and other household members' formal employment and earnings fall as well. The economic burden of dementia reaches the whole household, not just the person diagnosed.</p>
 <p style="margin-top: 0.6em;"><a href="/files/jobmarketpaper.pdf">Paper (PDF)</a></p>
 </div>
