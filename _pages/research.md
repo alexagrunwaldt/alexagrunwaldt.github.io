@@ -4,13 +4,19 @@ title: "Research"
 author_profile: true
 ---
 
+<div class="block" style="padding-bottom: 0;">
+<p>My research follows families through major life events. When someone is diagnosed with dementia, what happens to their household's work and earnings? How do people fare financially in the years around a spell of homelessness? And when an adult involved in crime joins a household, how do the children do in school?</p>
+</div>
+
 ## Job market paper
 
-### The Economic Consequences of Alzheimer's and Dementia: Evidence from Patients and Households in Colombia
+### [The Economic Consequences of Alzheimer's and Dementia: Evidence from Patients and Households in Colombia](/files/jobmarketpaper.pdf)
 
 <p class="meta">with Christian Posso and Andrea Franco Hernandez</p>
 
 Alzheimer's disease and related dementias (ADRD) can reduce a patient's ability to work while increasing care needs at home. We study how formal employment and earnings change for patients and their household members in Colombia, where formal long-term care is limited and multigenerational living is common. Linking national health records to monthly formal-employment data and SISBEN household rosters, we estimate stacked difference-in-differences event studies comparing newly diagnosed patients and their households with matched, never-diagnosed comparisons. Two years after a first recorded diagnosis, working-age patients' formal employment is about 15 percentage points lower. Among other working-age household members, formal employment is 3.5 percentage points lower after one year and 4.5 points lower after two, and earnings decline for both women and men, providing no evidence that relatives offset the patient's losses through their own formal work. These results document household-level losses in formal-sector attachment that patient-level analyses miss.
+
+<p class="boxes"><a class="box" href="/files/jobmarketpaper.pdf">Paper (PDF)</a></p>
 
 ## Working papers
 
