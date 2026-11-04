@@ -7,7 +7,9 @@
   </div>
 
   <div class="profile__block profile__contact">
-    <p><b>{{ author.name }}</b><br>{{ author.email }}</p>
+    <p class="profile__name"><b>{{ author.name }}</b></p>
+    {% if author.email %}<p><a href="mailto:{{ author.email }}">{{ author.email }}</a></p>{% endif %}
+    {% if author.linkedin %}<p><a href="https://www.linkedin.com/in/{{ author.linkedin }}">LinkedIn</a></p>{% endif %}
   </div>
 
   <div class="profile__block profile__fields">
@@ -27,7 +29,5 @@
       {% endif %}
       <a href="{{ domain }}{{ link.url }}"{% if current %} aria-current="page"{% endif %}>{{ link.title }}</a>
     {% endfor %}
-    {% if author.email %}<a href="mailto:{{ author.email }}">Email</a>{% endif %}
-    {% if author.linkedin %}<a href="https://www.linkedin.com/in/{{ author.linkedin }}">LinkedIn</a>{% endif %}
   </nav>
 </div>
